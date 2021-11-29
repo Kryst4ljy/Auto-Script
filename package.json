@@ -1,0 +1,19 @@
+{
+  "name": "juejin-sign",
+  "version": "1.0.0",
+  "description": "auto script project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kryst4ljy/JueJin-sign.git"
+  },
+  "author": "kryst4l",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kryst4ljy/JueJin-sign/issues"
+  },
+  "homepage": "https://github.com/Kryst4ljy/JueJin-sign#readme"
+}
