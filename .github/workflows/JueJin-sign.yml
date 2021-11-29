@@ -7,13 +7,13 @@ on:
 
 jobs:
   # 构建任务：此任务目标为构建node环境，为运行node脚本做准备
- build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
       - run: npm install
 
   send:
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
       - name: Run Project
         env:
           COOKIE: ${{ secrets.JUEJINCOOKIE }}
@@ -30,16 +30,3 @@ jobs:
           PASS: ${{ secrets.sendMailPass }}
           TO: ${{ secrets.toMail }}
         run: npm install && npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
