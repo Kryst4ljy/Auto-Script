@@ -10,23 +10,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 步骤一：准备node环境
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 12
-      - run: npm install
+          node-version: 14
+      - run: |
+          npm install
+          echo Node Env Done~
 
-  send:
+  # 运行任务：运行自动签到脚本
+  run-script:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
+      # 步骤二：运行node脚本
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Run Project
-        env:
-          COOKIE: ${{ secrets.JUEJINCOOKIE }}
-          USER: ${{ secrets.sendMail }}
-          PASS: ${{ secrets.sendMailPass }}
-          TO: ${{ secrets.toMail }}
-        run: npm install && npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
+      - name: Run Job
+      env:
+        JUEJINCOOKIE: ${{ secrets.JUEJINCOOKIE }}
+        sendMail: ${{ secrets.sendMail }}
+        sendMailPass: ${{ secrets.sendMailPass }}
+        toMail: ${{ secrets.toMail }}
+      run: npm run juejin-sign "${COOKIE}" "${USER}" "${sendMailPass}" "${toMail}"
