@@ -26,6 +26,9 @@ jobs:
     steps:
       # 步骤二：运行node脚本
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
       - name: Run Script
         env:
           COOKIE: ${{ secrets.JUEJINCOOKIE }}
