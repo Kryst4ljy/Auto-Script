@@ -1,0 +1,21 @@
+name: JueJin-sign
+
+on:
+  schedule:
+    - cron: "30 21 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上5点半自动执行
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
