@@ -7,25 +7,39 @@ on:
 
 jobs:
   # 构建任务：此任务目标为构建node环境，为运行node脚本做准备
-  build-and-run:
+ build:
     runs-on: ubuntu-latest
     steps:
-      # 步骤一：复制代码
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm install
 
-      # 步骤二：搭建node环境
-      - name: Node
-        uses: actions/setup-node@v2
-          with:
-            node-version: "14"
-        run: npm install
-
-      # 步骤三：运行node脚本
-      - name: Run Script
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Run Project
         env:
           COOKIE: ${{ secrets.JUEJINCOOKIE }}
           USER: ${{ secrets.sendMail }}
           PASS: ${{ secrets.sendMailPass }}
           TO: ${{ secrets.toMail }}
         run: npm install && npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
