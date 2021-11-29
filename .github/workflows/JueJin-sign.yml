@@ -29,7 +29,7 @@ jobs:
       - name: Run Job
         env:
           JUEJINCOOKIE: ${{ secrets.JUEJINCOOKIE }}
-          sendMail: ${{ secrets.sendMail }}
-          sendMailPass: ${{ secrets.sendMailPass }}
-          toMail: ${{ secrets.toMail }}
-        run: npm run juejin-sign "${COOKIE}" "${USER}" "${sendMailPass}" "${toMail}"
+          SENDMAIL: ${{ secrets.SENDMAIL }}
+          SENDMAILPASS: ${{ secrets.SENDMAILPASS }}
+          TOMAIL: ${{ secrets.TOMAIL }}
+        run: npm run juejin-sign "${JUEJINCOOKIE}" "${SENDMAIL}" "${SENDMAILPASS}" "${TOMAIL}"
