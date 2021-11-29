@@ -10,14 +10,21 @@ jobs:
   # 构建任务：此任务目标为构建node环境，为运行node脚本做准备
   build:
     runs-on: ubuntu-latest
+    # steps:
+    #   # 步骤一：准备node环境
+    #   - name: Build Node Env
+    #   - uses: actions/checkout@v2
+    #   - uses: actions/setup-node@v2
+    #     with:
+    #       node-version: 14
+    #   - run: echo Node Env Done~！
+
     steps:
-      # 步骤一：准备node环境
-      - name: Build Node Env
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - run: echo Node Env Done~！
+          node-version: 12
+      - run: npm ci
 
   # 运行任务：运行自动签到脚本
   # run-script:
