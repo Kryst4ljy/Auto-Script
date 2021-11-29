@@ -1,22 +1,34 @@
 name: JueJin-sign
 
-on: [push]
+on:
 
-#   schedule:
-#     - cron: "30 21 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上5点半自动执行
-
-#   # Allows you to run this workflow manually from the Actions tab
-#   workflow_dispatch:
-
+  schedule:
+    - cron: "30 21 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上5点半自动执行
+    
 jobs:
+  # 构建任务：此任务目标为构建node环境，为运行node脚本做准备
   build:
     runs-on: ubuntu-latest
     steps:
+      # 步骤一：准备node环境
+      - name: Build Node Env
       - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: echo Hello, world!
-        
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run:
+          npm install
+          echo Node Env Done~！
+  
+  # 运行任务：运行自动签到脚本
+  run-script:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      # 步骤二：运行node脚本
+      - name: Run Node Script
+      - uses: actions/checkout@v2
+      - run: 
+          node index.js
+   
+      
