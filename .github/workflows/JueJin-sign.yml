@@ -1,7 +1,7 @@
 name: JueJin-sign
 
 on:
-[push]
+  [push]
   # schedule:
   #   - cron: "0 0 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上8点钟自动执行
 
