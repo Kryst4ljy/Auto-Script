@@ -26,4 +26,9 @@ jobs:
     steps:
       # 步骤二：运行node脚本
       - uses: actions/checkout@v2
-      - run: npm run juejin-sign
+      env:
+        COOKIE: ${{ secrets.JUEJINCOOKIE }}
+        USER: ${{ secrets.sendMail }}
+        PASS: ${{ secrets.sendMailPass }}
+        TO: ${{ secrets.toMail }}
+      run: npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
