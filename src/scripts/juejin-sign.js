@@ -2,9 +2,6 @@ const axios = require("../lib/request");
 const sendMail = require("../lib/mail");
 const { JueJin_Domain } = require("../config/domain");
 
-// const cookie =
-//   "_ga=GA1.2.50751009.1606974420; odin_tt=342feeddd1f281c8a3c6afbaa5a94d136b98134fd5c1bbbe08f03f9285d01ba6ed061816268289abae638309c7179706c0e6129cf9d7039df229f3523094db34; n_mh=iBMi6NWY2kfUPou6RsOQtb6eAohK5ciLSIK5L8ik7bU; MONITOR_WEB_ID=20d2da37-7332-4cc3-b80c-3dc0ec7a4720; _tea_utm_cache_2608={%22utm_source%22:%22xitongxiaoxi1103%22%2C%22utm_medium%22:%22push%22%2C%22utm_campaign%22:%22gengwen_2021111%22}; passport_csrf_token_default=37dd6687e689eb353f4c6c338ea531f9; passport_csrf_token=37dd6687e689eb353f4c6c338ea531f9; _tea_utm_cache_2018=undefined; passport_auth_status=4a0eae598cc611cdda8d25408d394763%2C; passport_auth_status_ss=4a0eae598cc611cdda8d25408d394763%2C; _gid=GA1.2.1815801962.1638151894; sid_guard=d3ef3a98a9c2418b364085cb506b30a6%7C1638165410%7C5184000%7CFri%2C+28-Jan-2022+05%3A56%3A50+GMT; uid_tt=cc34506573fdc563e86debfb16bf5834; uid_tt_ss=cc34506573fdc563e86debfb16bf5834; sid_tt=d3ef3a98a9c2418b364085cb506b30a6; sessionid=d3ef3a98a9c2418b364085cb506b30a6; sessionid_ss=d3ef3a98a9c2418b364085cb506b30a6; sid_ucp_v1=1.0.0-KDgxNTBjNzcxMWUwYTM1Y2JhYTBkOGE5OTZkNWJiOTliNzZhOWY4ODgKFgjNodCg6fXjBBCi15GNBhiwFDgIQDgaAmxmIiBkM2VmM2E5OGE5YzI0MThiMzY0MDg1Y2I1MDZiMzBhNg; ssid_ucp_v1=1.0.0-KDgxNTBjNzcxMWUwYTM1Y2JhYTBkOGE5OTZkNWJiOTliNzZhOWY4ODgKFgjNodCg6fXjBBCi15GNBhiwFDgIQDgaAmxmIiBkM2VmM2E5OGE5YzI0MThiMzY0MDg1Y2I1MDZiMzBhNg";
-
 const [cookie] = process.argv.slice(2);
 
 const res = {

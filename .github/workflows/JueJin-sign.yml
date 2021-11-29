@@ -1,20 +1,21 @@
 name: JueJin-sign
 
 on:
-  [push]
-  # schedule:
-  #   - cron: "0 0 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上8点钟自动执行
+  schedule:
+    - cron: "0 0 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上8点钟自动执行
 
 jobs:
   # 运行任务：运行自动签到脚本
   run-script:
     runs-on: ubuntu-latest
     steps:
-      # 步骤二：运行node脚本
+      # 步骤一：复制代码
       - uses: actions/checkout@v2
+      # 步骤二：搭建node环境
       - uses: actions/setup-node@v2
         with:
           node-version: 14
+      # 步骤三：执行掘金自动签到&免费抽奖脚本
       - name: Run Job
         env:
           JUEJINCOOKIE: ${{ secrets.JUEJINCOOKIE }}
