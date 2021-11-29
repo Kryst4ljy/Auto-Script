@@ -12,14 +12,14 @@ jobs:
     steps:
       # 步骤一：复制代码
       - name: checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       # 步骤二：搭建node环境
       - name: node
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-      - run: npm install
+        uses: actions/setup-node@v2
+          with:
+            node-version: "14"
+        run: npm install
 
       # 步骤三：运行node脚本
       - name: Run Script
@@ -28,4 +28,4 @@ jobs:
           USER: ${{ secrets.sendMail }}
           PASS: ${{ secrets.sendMailPass }}
           TO: ${{ secrets.toMail }}
-      - run: npm install && npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
+        run: npm install && npm run juejin-sign "${JUEJINCOOKIE}" "${sendMail}" "${sendMailPass}" "${toMail}"
