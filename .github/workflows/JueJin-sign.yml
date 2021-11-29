@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: "30 21 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上5点半自动执行
 
-  workflow_dispatch:
-
 jobs:
   # 构建任务：此任务目标为构建node环境，为运行node脚本做准备
   build:
@@ -15,22 +13,16 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
-      - run: echo Node Env Done~！
-
-    # steps:
-    #   - uses: actions/checkout@v2
-    #   - uses: actions/setup-node@v1
-    #     with:
-    #       node-version: 12
-    #   - run: npm ci
+          node-version: "14"
+      - run: |
+          npm install
+          echo Node Env Done~！
 
   # 运行任务：运行自动签到脚本
-  # run-script:
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # 步骤二：运行node脚本
-  #     - name: Run Node Script
-  #     - uses: actions/checkout@v2
-  #     - run: node index.js
+  run-script:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      # 步骤二：运行node脚本
+      - uses: actions/checkout@v2
+      - run: node index.js
