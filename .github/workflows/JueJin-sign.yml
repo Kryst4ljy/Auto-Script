@@ -20,11 +20,11 @@ jobs:
           echo Node Env Done~！
 
   # 运行任务：运行自动签到脚本
-  run-script:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      # 步骤二：运行node脚本
-      - name: Run Node Script
-      - uses: actions/checkout@v2
-      - run: node index.js
+  # run-script:
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # 步骤二：运行node脚本
+  #     - name: Run Node Script
+  #     - uses: actions/checkout@v2
+  #     - run: node index.js
