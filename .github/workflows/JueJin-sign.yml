@@ -8,7 +8,6 @@ on:
 jobs:
   # 运行任务：运行自动签到脚本
   run-script:
-    needs: [build]
     runs-on: ubuntu-latest
     steps:
       # 步骤二：运行node脚本
