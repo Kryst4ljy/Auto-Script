@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 步骤一：准备node环境
-      - name: Build Node Env
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
       - run: echo Node Env Done~！
