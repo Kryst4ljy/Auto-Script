@@ -19,6 +19,7 @@ const todaySignInfo = async () => {
     headers: { cookie },
     method: "get",
   });
+  console.log("签到情况LOG：", data);
   // 查询签到情况出错 - 发送邮件
   if (data.err_no !== 0) {
     sendMail(`<h1>查询签到状态接口报错：${data.err_msg}</h1>`);
@@ -63,6 +64,7 @@ const freeLotteryInfo = async () => {
     headers: { cookie },
     method: "get",
   });
+  console.log("免费抽奖情况LOG：", data);
   // 查询每日免费抽奖情况出错 - 发送邮件 - doing
   if (data.err_no !== 0) {
     sendMail(`<h1>查询免费抽奖信息接口报错：${data.err_msg}</h1>`);
