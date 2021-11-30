@@ -1,8 +1,9 @@
 name: JueJin-sign
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上8点钟自动执行
+  [push]
+  # schedule:
+  #   - cron: "0 0 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上8点钟自动执行
 
 jobs:
   # 运行任务：运行自动签到脚本
