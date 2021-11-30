@@ -110,6 +110,7 @@ const run = async () => {
     <p>今日累计矿石：${res.sum_point}</p>
     <p>免费机会抽中的奖品：${res.lottery_name}</p>
   `;
+  console.log("发送邮件");
   res.status === 1 && sendMail(resHTML);
 };
 
