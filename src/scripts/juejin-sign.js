@@ -19,7 +19,7 @@ const todaySignInfo = async () => {
     headers: { cookie },
     method: "get",
   });
-  console.log("签到情况LOG：", data);
+  console.log("查询签到情况LOG：", data);
   // 查询签到情况出错 - 发送邮件
   if (data.err_no !== 0) {
     sendMail(`<h1>查询签到状态接口报错：${data.err_msg}</h1>`);
@@ -44,6 +44,7 @@ const doSign = async () => {
     headers: { cookie },
   });
 
+  console.log("签到LOG：", data);
   // 签到情况出错 - 发送邮件
   if (data.err_no !== 0) {
     sendMail(`<h1>签到接口报错：${data.err_msg}</h1>`);
@@ -51,8 +52,8 @@ const doSign = async () => {
   }
 
   // 签到成功，发送邮件至绑定邮箱 - 增加的矿石 & 累计矿石
-  res.incr_point = data.incr_point;
-  res.sum_point = data.sum_point;
+  res.incr_point = data.data.incr_point;
+  res.sum_point = data.data.sum_point;
 };
 
 // 获取今日免费抽奖情况
@@ -88,6 +89,8 @@ const doFreeLottery = async () => {
     url: "lottery/draw",
     headers: { cookie },
   });
+
+  console.log("免费抽奖LOG：", data);
   // 查询每日免费抽奖情况出错 - 发送邮件
   if (data.err_no !== 0) {
     sendMail(`<h1>免费抽奖接口报错：${data.err_msg}</h1>`);
@@ -102,6 +105,7 @@ const run = async () => {
   await todaySignInfo();
   await freeLotteryInfo();
 
+  console.log("发送邮件");
   const resHTML = `
     <h1>掘金每日脚本</h1>
     <h2>今日签到结果：</h2>
@@ -109,7 +113,7 @@ const run = async () => {
     <p>今日累计矿石：${res.sum_point}</p>
     <p>免费机会抽中的奖品：${res.lottery_name}</p>
   `;
-  console.log("发送邮件");
+  console.log("邮件信息LOG：", res);
   sendMail(resHTML);
 };
 
