@@ -32,7 +32,7 @@ const todaySignInfo = async () => {
   }
 
   // 进行签到操作
-  doSign();
+  await doSign();
 };
 
 // 进行签到操作
@@ -78,7 +78,7 @@ const freeLotteryInfo = async () => {
   }
 
   // 进行免费抽奖操作
-  doFreeLottery();
+  await doFreeLottery();
 };
 
 // 免费抽奖
